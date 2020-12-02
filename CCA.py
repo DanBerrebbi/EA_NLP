@@ -115,6 +115,9 @@ print(time.time()-t1)
 X_c, Y_c = cca.transform(X=src_embeddings_5000, Y=tgt_embeddings_5000)
 
 
+# similarité cosinus :
+def cos(a,b):
+    return dot(a, b)/(norm(a)*norm(b))
 
 import matplotlib.pyplot as plt
 
