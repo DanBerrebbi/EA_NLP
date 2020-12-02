@@ -108,7 +108,7 @@ import time
 t1=time.time()
 
 cca=CCA(n_components=10)
-cca.fit(X=src_embeddings_5000[300:400], Y=tgt_embeddings_5000[300:400])
+cca.fit(X=src_embeddings_5000[0:100], Y=tgt_embeddings_5000[0:100])
 
 print(time.time()-t1)
 
