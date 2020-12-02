@@ -16,15 +16,6 @@ model_en = Word2Vec.load(PATH+"\\word2vec_europarl_en.model")
 model_fr.corpus_total_words
 model_fr.wv.most_similar("chat")
 
-y = [2.56422, 3.77284, 3.52623, 3.51468, 3.02199]
-z = [0.15, 0.3, 0.45, 0.6, 0.75]
-n = [58, 651, 393, 203, 'papa']
-
-fig, ax = plt.subplots()
-ax.scatter(z, y)
-
-for i, txt in enumerate(n):
-    ax.annotate(txt, (z[i], y[i]))
 
 mots = ["chat", "chien", "bonjour", "fenêtre"]
 words = ["cat", "dog", "hello", "window"]
