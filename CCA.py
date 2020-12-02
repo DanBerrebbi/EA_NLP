@@ -105,14 +105,6 @@ import numpy as np
 from sklearn.cross_decomposition.cca_ import CCA
 import time
 
-X = [[0., 0., 1.], [1.,0.,0.], [2.,2.,2.], [3.,5.,4.]]
-Y = [[0.1, -0.2], [0.9, 1.1], [6.2, 5.9], [11.9, 12.3]]
-cca = CCA(n_components=1)
-cca.fit(X, Y)
-
-X_c, Y_c = cca.transform(X, Y)
-
-
 t1=time.time()
 
 cca=CCA(n_components=10)
