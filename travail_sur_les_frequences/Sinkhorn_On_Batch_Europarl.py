@@ -32,7 +32,6 @@ src_embeddings, src_id2word, src_word2id = load_vec(src_path, nmax)
 tgt_embeddings, tgt_id2word, tgt_word2id = load_vec(tgt_path, nmax)
 
 
-
 ################################################
 ##      ON FAIT AVEC DES BATCHS
 ################################################
@@ -151,6 +150,7 @@ for n in range(MATRIX_FREQ.shape[0]):
             MATRIX_FREQ[n][m]=100*MATRIX_FREQ[n][m]/coeff_ligne
 
 
+
 ############################################
 ##    Première analyse des résultats
 ############################################
@@ -166,3 +166,111 @@ for n in range(MATRIX_FREQ.shape[0]):
     for m in range(MATRIX_FREQ.shape[1]):
         if MATRIX_FREQ[n][m]>seuil:
             print(batch_fr_id2word[m], batch_en_id2word[n])
+
+
+# sur ce batch seulement :
+seuils = [5*k for k in range(1,21)]
+trad=[]
+for seuil in seuils:
+    i = 0
+    for n in range(MATRIX_FREQ.shape[0]):
+        if MATRIX_FREQ[n].max()>seuil:
+            i+=1
+            continue
+    trad.append(100*i/MATRIX_FREQ.shape[0])
+
+import matplotlib.pyplot as plt
+
+plt.xlabel("seuil au dessus duquel on traduit un mot (%)")
+plt.ylabel("Mots traduits (%)")
+plt.title("Mots qui ont une traduction en fonction du seuil de confiance")
+plt.plot(seuils,trad,'r',label='avec frequences')
+plt.legend()
+
+
+##########################################################
+##      Comparaison version avec frequences uniformes
+##########################################################
+
+distrib1=batch_en_embeddings
+distrib2=batch_fr_embeddings
+
+freq_lang1=[1. for word in BATCH_WORDS_EN & europarl_word_to_id_en.keys()]
+lg1=float(len(freq_lang1))
+freq_lang2=[1. for x in BATCH_WORDS_FR & europarl_word_to_id_fr.keys()]
+lg2=float(len(freq_lang2))
+
+freq_uni_lang1=[x/lg1 for x in freq_lang1]
+freq_uni_lang2=[x/lg2 for x in freq_lang2]
+
+epsilon = 0.01
+niter = 150
+
+# Wrap with torch tensors
+X = torch.FloatTensor(distrib1)
+Y = torch.FloatTensor(distrib2)
+
+l1 = spc.FREQ_sinkhorn_loss(X,Y,epsilon,freq_lang1, freq_lang2,niter)
+
+print("Sinkhorn loss : ", l1[0].data.item())
+
+
+MATRIX_FREQ_UNI=np.array(l1[1])
+for n in range(MATRIX_FREQ_UNI.shape[0]):
+    coeff_ligne=sum([ x for x in MATRIX_FREQ_UNI[n]])
+    for m in range(MATRIX_FREQ_UNI.shape[1]):
+        if coeff_ligne!=0:
+            MATRIX_FREQ_UNI[n][m]=100*MATRIX_FREQ_UNI[n][m]/coeff_ligne
+
+
+# sur ce batch seulement :
+seuils = [5*k for k in range(1,21)]
+trad=[]
+trad_unif=[]
+for seuil in seuils:
+    i = 0
+    for n in range(MATRIX_FREQ.shape[0]):
+        if MATRIX_FREQ[n].max()>seuil:
+            i+=1
+            continue
+    trad.append(100*i/MATRIX_FREQ.shape[0])
+
+    i=0
+    for n in range(MATRIX_FREQ_UNI.shape[0]):
+        if MATRIX_FREQ_UNI[n].max()>seuil:
+            i+=1
+            continue
+    trad_unif.append(100*i/MATRIX_FREQ_UNI.shape[0])
+
+
+plt.xlabel("seuil au dessus duquel on traduit un mot (%)")
+plt.ylabel("Mots traduits (%)")
+plt.title("Mots qui ont une traduction en fonction du seuil de confiance")
+plt.plot(seuils,trad_unif,'b',label='avec frequences uniformes')
+plt.plot(seuils,trad,'r',label='avec frequences')
+plt.legend()
+plt.savefig("Mots qui ont une traduction en fonction du seuil de confiance.png")
+
+
+
+
+
+##################################################
+##      Analyse plus poussée
+##################################################
+
+# comment dire si c bien ?
+# plusieurs idée, je pense que la meilleure est de regarder le cos avec les muses multilinguaux pour voir si les fréquences ca ajoute un truc
+
+### First : exporter Batch par Batch les "traductions" au seuil 95
+
+seuil=50
+i=0
+for n in range(MATRIX_FREQ.shape[0]):
+    for m in range(MATRIX_FREQ.shape[1]):
+        if MATRIX_FREQ[n][m]>seuil:
+            i+=1
+            print(batch_fr_id2word[m], batch_en_id2word[n])
+
+
+print(i)
