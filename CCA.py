@@ -115,7 +115,10 @@ print(time.time()-t1)
 X_c, Y_c = cca.transform(X=src_embeddings_5000, Y=tgt_embeddings_5000)
 
 
-# similarité cosinus :
+####################################
+##  Similarité cosinus 
+####################################
+
 def cos(a,b):
     return dot(a, b)/(norm(a)*norm(b))
 
@@ -147,6 +150,36 @@ plt.title("Similarité cosinus des paires mots/traduction avant et après la CCA
 plt.savefig("cosinus_avant_et_apres_cca_avec_10_composantes.png")
 
 
+####################################
+## corrélation R2
+####################################
+
+from sklearn.metrics import r2_score
+
+X=[]
+Y_orig, Y_cca = [], []
+
+for k in range(1000,2000, 10):
+    X.append(k)
+    Y_orig.append(r2_score(src_embeddings_5000[k],tgt_embeddings_5000[k]))
+    Y_cca.append(r2_score(X_c[k],Y_c[k]))
+
+Y_orig, Y_cca= np.array(Y_orig), np.array(Y_cca)
+print("Initial mean : {}    Initial std : {}".format(Y_orig.mean(),Y_orig.std()))
+print("After cca mean : {}      After cca std : {}".format(Y_cca.mean(),Y_cca.std()))
+
+plt.plot(X,Y_orig, color="r", label= 'avant la CCA')
+plt.plot(X,Y_cca, color="b", label='après la CCA')
+#plot the means
+plt.plot(X,[Y_orig.mean() for _ in X], color="black", label="moyennes")
+plt.plot(X,[Y_cca.mean() for _ in X], color="black")
+plt.ylabel("similarité cosinus")
+plt.xlabel("1000 couples (mot , traduction)")
+plt.xlim(1000,2000)
+
+plt.legend()
+plt.title("Score R2 des paires mots/traduction avant et après la CCA")
+plt.savefig("r2_avant_et_apres_cca_avec_10_composantes.png")
 
 
 DIM, MOY, STD, TEMPS = [], [], [], []
