@@ -108,7 +108,7 @@ import time
 t1=time.time()
 
 cca=CCA(n_components=10)
-cca.fit(X=src_embeddings_5000[0:100], Y=tgt_embeddings_5000[0:100])
+cca.fit(X=src_embeddings_5000[0:1000], Y=tgt_embeddings_5000[0:1000])
 
 print(time.time()-t1)
 
@@ -133,12 +133,20 @@ Y_orig, Y_cca= np.array(Y_orig), np.array(Y_cca)
 print("Initial mean : {}    Initial std : {}".format(Y_orig.mean(),Y_orig.std()))
 print("After cca mean : {}      After cca std : {}".format(Y_cca.mean(),Y_cca.std()))
 
-plt.plot(X,Y_orig, color="r")
-plt.plot(X,Y_cca, color="b")
+plt.plot(X,Y_orig, color="r", label= 'avant la CCA')
+plt.plot(X,Y_cca, color="b", label='après la CCA')
 #plot the means
-plt.plot(X,[Y_orig.mean() for _ in X], color="r")
-plt.plot(X,[Y_cca.mean() for _ in X], color="b")
+plt.plot(X,[Y_orig.mean() for _ in X], color="black", label="moyennes")
+plt.plot(X,[Y_cca.mean() for _ in X], color="black")
+plt.ylabel("similarité cosinus")
+plt.xlabel("1000 couples (mot , traduction)")
+plt.xlim(1000,2000)
+
+plt.legend()
+plt.title("Similarité cosinus des paires mots/traduction avant et après la CCA")
 plt.savefig("cosinus_avant_et_apres_cca_avec_10_composantes.png")
+
+
 
 
 DIM, MOY, STD, TEMPS = [], [], [], []
