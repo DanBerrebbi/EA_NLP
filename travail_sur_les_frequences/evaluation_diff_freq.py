@@ -1,8 +1,8 @@
 import json
 
 seuil=50
-LISTE_TRAD_FREQ=json.load(open("dumped_trad_freq_batch_2_seuil{}.json".format(seuil),"r"))
-LISTE_TRAD_UNIF=json.load(open("dumped_trad_unif_batch_2_seuil{}.json".format(seuil),"r"))
+LISTE_TRAD_FREQ=json.load(open("dumped_trad_freq_seuil{}.json".format(seuil),"r"))
+LISTE_TRAD_UNIF=json.load(open("dumped_trad_unif_seuil{}.json".format(seuil),"r"))
 
 
 def load_doc(filename):
@@ -99,3 +99,48 @@ accuracy(dico_true=fr2en, dico_pred=LISTE_TRAD_UNIF_100)
 
 evaluate_freq_diff(freq1=frequences_fr, freq2=frequences_en, matching=dict_to_matching(LISTE_TRAD_FREQ_100))
 evaluate_freq_diff(freq1=frequences_fr, freq2=frequences_en, matching=dict_to_matching(LISTE_TRAD_UNIF_100))
+
+
+##################################################################
+##          Je tente un nouveau truc
+##################################################################
+
+
+def evaluate_freq_diff_2(freq1, freq2, matching):
+    lang1, lang2 = [x[0] for x in matching] , [x[1] for x in matching]
+    DIFF=0
+    for i in range(len(lang1)):
+        assert lang1[i] in freq1.keys()
+        assert lang2[i] in freq2.keys()
+        f1, f2 = freq1[lang1[i]], freq2[lang2[i]]
+        DIFF += abs(f2-f1)/(f1+f2)
+    print(DIFF/len(matching)*10000)
+
+def dict_to_matching(dict):
+    return [[a,b] for a,b in dict.items()]
+
+evaluate_freq_diff_2(freq1=frequences_fr, freq2=frequences_en, matching=dict_to_matching(LISTE_TRAD_FREQ))
+evaluate_freq_diff_2(freq1=frequences_fr, freq2=frequences_en, matching=dict_to_matching(LISTE_TRAD_UNIF))
+
+
+
+######################################################################
+###             encore un autre autre
+######################################################################
+
+def evaluate_freq_diff_3(freq1, freq2, matching):
+    lang1, lang2 = [x[0] for x in matching] , [x[1] for x in matching]
+    DIFF=0
+    for i in range(len(lang1)):
+        assert lang1[i] in freq1.keys()
+        assert lang2[i] in freq2.keys()
+        f1, f2 = freq1[lang1[i]], freq2[lang2[i]]
+        DIFF += f2/f1
+    print(DIFF/len(matching))
+
+def dict_to_matching(dict):
+    return [[a,b] for a,b in dict.items()]
+
+evaluate_freq_diff_3(freq1=frequences_fr, freq2=frequences_en, matching=dict_to_matching(LISTE_TRAD_FREQ))
+evaluate_freq_diff_3(freq1=frequences_fr, freq2=frequences_en, matching=dict_to_matching(LISTE_TRAD_UNIF))
+
