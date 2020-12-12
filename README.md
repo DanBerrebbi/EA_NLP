@@ -37,6 +37,6 @@ Les fichiers nécessaires à la suite du code sont dans le dossier [travail_sur_
 2) fichier [Sinkhorn_On_Batch_Europarl.py](https://github.com/DanBerrebbi/EA_NLP/blob/main/travail_sur_les_frequences/Sinkhorn_On_Batch_Europarl.py) : génération d'un plan de transport sur un batch, avec les deux méthodes : utilisation des fréquences réalistes et utilisation des fréquences uniformes. 
 Les résultats pour un batch sont dans le fichier [dumped_trad_unif_seuil95.json](https://github.com/DanBerrebbi/EA_NLP/blob/main/travail_sur_les_frequences/dumped_trad_unif_seuil95.json) pour les fréquences uniformes et dans le fichier [dumped_trad_freq_seuil95.json](https://github.com/DanBerrebbi/EA_NLP/blob/main/travail_sur_les_frequences/dumped_trad_freq_seuil95.json) pour les fréquences réalistes.
 
-3)
-
+On peut obtenir la courbe suivante : 
+![alt text](https://github.com/DanBerrebbi/EA_NLP/blob/main/travail_sur_les_frequences/Mots%20qui%20ont%20une%20traduction%20en%20fonction%20du%20seuil%20de%20confiance.png) 
 
