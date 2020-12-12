@@ -18,6 +18,12 @@ Nous avons utlisé l'imentation Gensim de Word2Vec (SkipGram) pour obtenir les v
 
 ![alt text](https://github.com/DanBerrebbi/EA_NLP/blob/main/Comparaison%20des%20embeddings%20de%20skipgram%20et%20de%20ceux%20de%20FastText.png) 
 
+## CCA : 
 
-<img src="https://latex.codecogs.com/gif.latex?P(s | O_t )=\text { Probability of a sensor reading value when sleep onset is observed at a time bin } t " />
+Nous avons repris l'idée de Faruqui et Dyer et avons utilisé une CCA pour projeter les mots et leur traduction dans un espace commun. L'implémentation de cette méthode est dans le fichier [CCA.py](https://github.com/DanBerrebbi/EA_NLP/blob/main/CCA.py).
+
+![alt text](https://github.com/DanBerrebbi/EA_NLP/blob/main/cosinus_avant_et_apres_cca_avec_10_composantes.png) 
+
+
+
 
