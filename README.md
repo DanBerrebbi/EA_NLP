@@ -25,5 +25,6 @@ Nous avons repris l'idée de Faruqui et Dyer et avons utilisé une CCA pour proj
 ![alt text](https://github.com/DanBerrebbi/EA_NLP/blob/main/cosinus_avant_et_apres_cca_avec_10_composantes.png) 
 
 
+# Travail sur les fréquences 
 
 
