@@ -3,11 +3,11 @@ Projet d'EA sous la supervision de Mr. Francois Yvon
 
 # Liens utiles : 
 
-1) github de [Facebook MUSE] (https://github.com/facebookresearch/MUSE)
-2) embeddings monolingue de [FastText (Facebook)] (https://fasttext.cc/docs/en/pretrained-vectors.html)
-3) Dataset [Europarl]  (http://www.statmt.org/europarl/)
-4) ([Dictionnaires et Embeddings]) produits par Mikel Artetxe (https://github.com/artetxem/vecmap/blob/master/get_data.sh)
-5) Une implémentation possible de l'[algorithme de Sinkhorn] (https://github.com/gpeyre/SinkhornAutoDiff)
+1) github de [Facebook MUSE](https://github.com/facebookresearch/MUSE)
+2) embeddings monolingue de [FastText (Facebook)](https://fasttext.cc/docs/en/pretrained-vectors.html)
+3) Dataset [Europarl](http://www.statmt.org/europarl/)
+4) [Dictionnaires et Embeddings](https://github.com/artetxem/vecmap/blob/master/get_data.sh) produits par Mikel Artetxe 
+5) Une implémentation possible de l'[algorithme de Sinkhorn](https://github.com/gpeyre/SinkhornAutoDiff)
 
 
 # Premières implémentations : 
