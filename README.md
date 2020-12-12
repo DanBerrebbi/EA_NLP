@@ -8,3 +8,8 @@ Projet d'EA sous la supervision de Mr. Francois Yvon
 3) Dataset Europarl : http://www.statmt.org/europarl/
 4) Données (dictionnaires et embeddings) produits par Mikel Artetxe : https://github.com/artetxem/vecmap/blob/master/get_data.sh
 
+
+# Equations : 
+
+$\sum $
+
