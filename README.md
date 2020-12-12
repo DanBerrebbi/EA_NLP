@@ -40,3 +40,5 @@ Les résultats pour un batch sont dans le fichier [dumped_trad_unif_seuil95.json
 On peut obtenir la courbe suivante : 
 ![alt text](https://github.com/DanBerrebbi/EA_NLP/blob/main/travail_sur_les_frequences/Mots%20qui%20ont%20une%20traduction%20en%20fonction%20du%20seuil%20de%20confiance.png) 
 
+
+3) Enfin les fichiers [evaluate_one_batch.py](https://github.com/DanBerrebbi/EA_NLP/blob/main/travail_sur_les_frequences/evaluate_one_batch.py), [evaluation_diff_freq.py](https://github.com/DanBerrebbi/EA_NLP/blob/main/travail_sur_les_frequences/evaluation_diff_freq.py), et [evaluation_diff_freq_population.py](https://github.com/DanBerrebbi/EA_NLP/blob/main/travail_sur_les_frequences/evaluation_diff_freq_population.py) permettent d'otbenir les résultats présentés dans la partie 6 du rapport.
