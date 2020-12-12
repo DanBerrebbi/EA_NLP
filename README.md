@@ -27,4 +27,16 @@ Nous avons repris l'idée de Faruqui et Dyer et avons utilisé une CCA pour proj
 
 # Travail sur les fréquences 
 
+La première étape a été l'analyse du corpus parallèle Europarl. Le fichier [extraction_freq_europarl.py](https://github.com/DanBerrebbi/EA_NLP/blob/main/extraction_freq_europarl.py] réalise l'extraction des fréquences de tous les mots présents dans Europarl. 
+Nous avons exporté ces fréquences en format pkl dans les fichiers [frequences_en.pkl](https://github.com/DanBerrebbi/EA_NLP/blob/main/frequences_en.pkl) et [frequences_fr.pkl](https://github.com/DanBerrebbi/EA_NLP/blob/main/frequences_fr.pkl). 
+
+Les fichiers nécessaires à la suite du code sont dans le dossier [travail_sur_les_frequences](https://github.com/DanBerrebbi/EA_NLP/tree/main/travail_sur_les_frequences).
+
+1) fichier [Sinkhorn_On_Europarl.py](https://github.com/DanBerrebbi/EA_NLP/blob/main/travail_sur_les_frequences/Sinkhorn_On_Europarl.py) : pour la génération de la matrice de transport à partir du corpus Europarl total (pas faisable sur nos ordinateurs et sur ceux de l'Ecole)
+
+2) fichier [Sinkhorn_On_Batch_Europarl.py](https://github.com/DanBerrebbi/EA_NLP/blob/main/travail_sur_les_frequences/Sinkhorn_On_Batch_Europarl.py) : génération d'un plan de transport sur un batch, avec les deux méthodes : utilisation des fréquences réalistes et utilisation des fréquences uniformes. 
+Les résultats pour un batch sont dans le fichier [dumped_trad_unif_seuil95.json](https://github.com/DanBerrebbi/EA_NLP/blob/main/travail_sur_les_frequences/dumped_trad_unif_seuil95.json) pour les fréquences uniformes et dans le fichier [dumped_trad_freq_seuil95.json](https://github.com/DanBerrebbi/EA_NLP/blob/main/travail_sur_les_frequences/dumped_trad_freq_seuil95.json) pour les fréquences réalistes.
+
+3)
+
 
