@@ -27,7 +27,7 @@ Nous avons repris l'idée de Faruqui et Dyer et avons utilisé une CCA pour proj
 
 # Travail sur les fréquences 
 
-La première étape a été l'analyse du corpus parallèle Europarl. Le fichier [extraction_freq_europarl.py](https://github.com/DanBerrebbi/EA_NLP/blob/main/extraction_freq_europarl.py] réalise l'extraction des fréquences de tous les mots présents dans Europarl. 
+La première étape a été l'analyse du corpus parallèle Europarl. Le fichier [extraction_freq_europarl.py](https://github.com/DanBerrebbi/EA_NLP/blob/main/extraction_freq_europarl.py) réalise l'extraction des fréquences de tous les mots présents dans Europarl. 
 Nous avons exporté ces fréquences en format pkl dans les fichiers [frequences_en.pkl](https://github.com/DanBerrebbi/EA_NLP/blob/main/frequences_en.pkl) et [frequences_fr.pkl](https://github.com/DanBerrebbi/EA_NLP/blob/main/frequences_fr.pkl). 
 
 Les fichiers nécessaires à la suite du code sont dans le dossier [travail_sur_les_frequences](https://github.com/DanBerrebbi/EA_NLP/tree/main/travail_sur_les_frequences).
