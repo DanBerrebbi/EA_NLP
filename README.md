@@ -1,5 +1,5 @@
 # EA_NLP
-Projet d'EA sous la supervision de Mr. Francois Yvon
+Projet d'EA, effectué par Dan Berribbi et Tom Sander sous la supervision du Professeur Francois Yvon
 
 # Liens utiles : 
 
